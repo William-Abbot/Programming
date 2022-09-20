@@ -1,0 +1,78 @@
+Python 3.8.5 (tags/v3.8.5:580fbb0, Jul 20 2020, 15:43:08) [MSC v.1926 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> s = 'yo'
+>>> print(s%%s)
+  File "<stdin>", line 1
+    print(s%%s)
+            ^
+SyntaxError: invalid syntax
+>>> print(s%s)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: not all arguments converted during string formatting
+>>> print(s)
+yo
+>>> s='yo %r'
+>>> print(s%s)
+yo 'yo %r'
+>>> s='yo%r'
+>>> print(s%s)
+yo'yo%r'
+>>> print(s%%s)
+  File "<stdin>", line 1
+    print(s%%s)
+            ^
+SyntaxError: invalid syntax
+>>> s='yo%%r'
+>>> print(s%s)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: not all arguments converted during string formatting
+>>> s='s=%r;print(s%%s)';print(s%s)
+s='s=%r;print(s%%s)';print(s%s)
+>>> s='yo%%r'
+>>> print(s%%s)
+  File "<stdin>", line 1
+    print(s%%s)
+            ^
+SyntaxError: invalid syntax
+>>> print(s%'%s')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: not all arguments converted during string formatting
+>>> s='%r'
+>>> print(s%s)
+'%r'
+>>> s='s=%r'
+>>> print(s%s)
+s='s=%r'
+>>> s='s=%r';print(s%s)
+s='s=%r'
+>>> x='1'
+>>> y='2'
+>>> print(s%x)
+s='1'
+>>> s
+'s=%r'
+>>> 0%5
+0
+>>> 1%5
+1
+>>> 4%5
+4
+>>> 5%5
+0
+>>> s='s%r;print(1)';print(s%s)
+s's%r;print(1)';print(1)
+>>> s='s=%r;print(1)';print(s%s)
+s='s=%r;print(1)';print(1)
+>>> s='s=%r;print(s%s)';print(s%s)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: not enough arguments for format string
+>>> s='s=%r;print(s%%s)';print(s%s)
+s='s=%r;print(s%%s)';print(s%s)
+>>> print(print(1))
+1
+None
+>>>
