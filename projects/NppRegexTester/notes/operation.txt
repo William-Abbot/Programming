@@ -1,0 +1,2 @@
+1. when the user clicks on menu item "Regular Expression Tester", a dialog that looks like the jgrasp one pops up.
+
