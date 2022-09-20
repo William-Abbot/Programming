@@ -1,0 +1,27 @@
+
+• A “square” refers to one of the 81 boxes in the sudoku grid, each of which is to be filled eventually
+with a digit from 1 to 9.
+
+• A “block” refers to a 3 × 3 sub-block of the main puzzle in which all of the numbers must appear
+exactly once in a solution. We will refer to a block by its columns and rows. Thus block ghi456
+includes the squares g4, g5, g6, h4, h5, h6, i4, i5 and i6.
+
+• A “candidate” is a number that could possibly go into a square in the grid. Many methods we will
+examine will eliminate candidates one after the other until there is a unique number that can go in
+a square.
+
+• Sometimes an argument will apply equally well to a row, column or block, and to keep from having
+to write “row, column or block” over and over, we may refer to it as a “virtual line”. A typical use
+of “virtual line” might be this: “If you know the values of 8 of the 9 entries in a virtual line, you can
+always deduce the value of the missing one.” In the 9 × 9 sudoku puzzles there are 27 such virtual
+lines.
+
+• Sometimes you would like to talk about all of the squares that cannot contain the same number as
+a given square since they are in the same row, column, or block. These are sometimes called the
+“buddies” of that square. For example, you might say something like, “If two buddies of a square
+have only two possible candidates, then you can eliminate those as candidates for the square.”
+
+
+
+
+I need to define each of these as either a data type or a class. 

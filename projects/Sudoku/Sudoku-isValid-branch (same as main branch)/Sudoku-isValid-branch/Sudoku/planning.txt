@@ -1,0 +1,44 @@
+
+I'm making a program that the user can run in the terminal with or without arguments. The program will, initially, display a hello message with directions and the initial sudoku board. Then the user will be able to type in commands to either have it solved by the computer or solve the puzzle themselves by entering in a location and a number to put at that location.
+
+1. create solving algorithm
+	- make it extensible to add solving "modules" to possibly make the computer able to solve faster
+	- going to try and add these methods:
+		1. “FORCED” CELL
+		2. “ONLY” CELL
+		3. SIMPLIFYING THE RANGE OF POSSIBILITIES
+		4. BACKTRACKING WITH DEPTH-FIRST-SEARCH(trial and error)
+2. test that
+3. decide what data structures to use in main.py
+4. build main.py
+
+
+- an index of solving methods can be found here: http://www.sadmansoftware.com/sudoku/solvingtechniques.php
+
+
+- an obvious heuristic if we're going to be more deliberate about it is to pick from among the most constrained cells (i.e., those with the fewest remaining candidates) in order to reduce the effective branching factor of our search.
+
+
+
+
+BACKTRACKING:
+
+place the number 1 in the first empty cell
+if chioce is valid:
+	mark cell as visited
+	continue to next empty cell
+else:
+	increment the number in the current cell
+	if it reaches a 9 and that is also invalid:
+		the program backtracks to the last visited cell (a cell that used to be empty) and increments that cell to the first valid number and continues.
+
+-This Algorithm can be improved with constraint propagation: after each new number is placed, the program generates a table of the remaining possible numbers in each empty cell and considers only numbers from this table.
+
+
+
+
+SIMPLIFYING THE RANGE OF POSSIBILITIES
+
+This technique is extremely powerful but requires a pencil and eraser. In each cell, you write all possible solutions very small or use dots whose positions represent the numbers 1 to 9. Then you apply logic to try to eliminate options.
+	For example, grid c shows how grid a would look if it were marked up by rote, without methods 1 and 2 being applied fi rst. In the third column, the array of possibilities for the second, third, fourth, fi fth and sixth cells are, respectively, {2, 3, 6, 7}, {3, 6, 9}, {2, 6}, {2, 6} and {6, 7}. The column must contain a 2 and a 6, so these numbers must be in the two cells whose sole possibilities are 2 and 6 (circled in fi rst detail). Consequently, 2 and 6 cannot be anywhere else in this column and can be deleted from the column’s other cells (red). The range of possibilities for the column is simplifi ed to {3, 7}, {3, 9}, {2, 6}, {2, 6}, {7}. But that isn’t all. Stipulating the position of 7 in turn dictates the positions of 3 and of 9 (second detail). The fi nal possibilities are {3}, {9}, {2, 6}, {2, 6}, {7}. A single uncertainty remains: where 2 and 6 should go.
+	The general rule for simplifying possibilities is the following: if, among a set of possibilities (for a row, column or subgrid), you fi nd m cells that contain a subset consisting only of m numbers (but not necessarily all of them in each cell), the digits in the subset can be eliminated as possibilities from the other cells in the larger set. For instance, in d the arrangement {2, 3}, {1, 3}, {1, 2}, {1, 2, 4, 5}, {3, 5, 7} can be simplifi ed to {2, 3}, {1, 3}, {1, 2}, {4, 5}, {5, 7}, because the cells {2, 3}, {1, 3}, {1, 2} all come from the subset {1, 2, 3} and have no other numbers.
